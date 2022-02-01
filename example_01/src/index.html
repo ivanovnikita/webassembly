@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+</head>
+<body>
+    <script src="wasm_example_01.js"></script>
+    <script src="ui.js"></script>
+    <p>
+        Use printf(): <button onclick="on_click_print_message()">Print to console</button>
+    </p>
+    <p>
+        Return string literal: <button onclick="on_click_get_static_message()">Print to console</button>
+    </p>
+    <p>
+        Allocate on js side: <button onclick="on_click_copy_message()">Print to console</button>
+    </p>
+    <p>
+        Allocate on cpp side: <button onclick="on_click_get_allocated_message()">Print to console</button>
+    </p>
+</body>
+</html>
