@@ -16,13 +16,16 @@ add_executable(wasm_example_01 src/main.cpp)
 target_link_options(wasm_example_01 PRIVATE "-sEXPORTED_RUNTIME_METHODS=cwrap,UTF8ToString")
 target_link_options(wasm_example_01
     PRIVATE
-    "-sEXPORTED_FUNCTIONS=
-    _malloc,
-    _free,
-    _print_message,
-    _get_static_message,
-    _copy_message,
-    _get_allocated_message" # build will fail if there is no such symbol
+    "-sEXPORTED_FUNCTIONS=\
+    _malloc,\
+    _free,\
+    _print_message,\
+    _get_static_message,\
+    _copy_message,\
+    _get_allocated_message,\
+    _invoke_assert,\
+    _write_to_file,\
+    _read_from_file" # build will fail if there is no such symbol
 )
 
 install(

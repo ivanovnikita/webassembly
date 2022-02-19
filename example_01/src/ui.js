@@ -57,3 +57,36 @@ function on_click_get_allocated_message()
 
     console.log(message);
 }
+
+var invoke_assert = Module.cwrap
+(
+    'invoke_assert',
+    null,
+);
+
+function on_invoke_assert()
+{
+    invoke_assert();
+}
+
+var write_to_file = Module.cwrap
+(
+    'write_to_file',
+    null,
+);
+
+function on_write_to_file()
+{
+    write_to_file();
+}
+
+var read_from_file = Module.cwrap
+(
+    'read_from_file',
+    null,
+);
+
+function on_read_from_file()
+{
+    read_from_file();
+}
