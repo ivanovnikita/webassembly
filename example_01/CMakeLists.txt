@@ -13,7 +13,19 @@ set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -s ENVIRONMENT=web")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -s ENVIRONMENT=web")
 
 add_executable(wasm_example_01 src/main.cpp)
-target_link_options(wasm_example_01 PRIVATE "-sEXPORTED_RUNTIME_METHODS=cwrap,UTF8ToString")
+target_link_options(wasm_example_01
+    PRIVATE
+        "-fexceptions"
+        "-lidbfs.js"
+)
+target_link_options(wasm_example_01
+    PRIVATE
+    "-sEXPORTED_RUNTIME_METHODS=\
+    cwrap,\
+    UTF8ToString,\
+    stringToUTF8,\
+    stackAlloc"
+)
 target_link_options(wasm_example_01
     PRIVATE
     "-sEXPORTED_FUNCTIONS=\
@@ -24,6 +36,7 @@ target_link_options(wasm_example_01
     _copy_message,\
     _get_allocated_message,\
     _invoke_assert,\
+    _throw_exception,\
     _write_to_file,\
     _read_from_file" # build will fail if there is no such symbol
 )

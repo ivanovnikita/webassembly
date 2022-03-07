@@ -18,14 +18,57 @@
     <p>
         Allocate on cpp side: <button onclick="on_click_get_allocated_message()">Print to console</button>
     </p>
+
+    <hr>
+
     <p>
         Invoke assert: <button onclick="on_invoke_assert()">Print to console</button>
     </p>
     <p>
+        Throw exception: <button onclick="on_throw_exception()">Print to console</button>
+    </p>
+
+    <hr>
+
+    <p>
         Write to file: <button onclick="on_write_to_file()">Write</button>
     </p>
+
+    Filename: <input type="text" name="name_of_file_to_write" value="some_file.txt">
+    Text: <input type="text" name="text_to_write" value="Some text">
+
+    <hr>
+
     <p>
         Read from file: <button onclick="on_read_from_file()">Read and print to console</button>
     </p>
+
+    Filename: <input type="text" name="name_of_file_to_read" value="some_file.txt">
+
+    <hr>
+
+    <p>
+
+    <input type="file" id="choose_file" />
+    <button onclick="on_from_disk_to_virtual_fs()">Read file from disk and write to virtual fs</button>
+
+    </p>
+
+    <p>
+
+    Filename in virtual FS: <input type="text" name="name_of_virtual_file_to_write" value="some_file.txt">
+
+    </p>
+
+    <hr>
+
+    <button onclick="on_mount_persistent_fs()">Mount persistent virtual FS</button>
+    <input type="text" name="mount_point" value="/persistent">
+
+    <p>
+    <button onclick="on_restore_from_idbfs()">Restore persistent FS from IDBFS</button>
+    <button onclick="on_save_to_idbfs()">Save persistent FS to IDBFS</button>
+    </p>
+
 </body>
 </html>

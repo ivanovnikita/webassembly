@@ -38,9 +38,13 @@ extern "C"
         assert(false);
     }
 
-    void write_to_file()
+    void throw_exception()
     {
-        constexpr const char* filename = "tmp_file.txt";
+        throw std::logic_error("logic error");
+    }
+
+    void write_to_file(const char* filename, const char* text_to_print)
+    {
         FILE* file = std::fopen(filename, "w+");
         if (file == nullptr)
         {
@@ -48,14 +52,14 @@ extern "C"
             return;
         }
 
-        std::fprintf(file, "Hello world!");
+        std::fwrite(text_to_print, sizeof(char), std::strlen(text_to_print), file);
+        std::fflush(file);
 
         std::fclose(file);
     }
 
-    void read_from_file()
+    void read_from_file(const char* filename)
     {
-        constexpr const char* filename = "tmp_file.txt";
         FILE* file = std::fopen(filename, "r+");
         if (file == nullptr)
         {
@@ -69,7 +73,7 @@ extern "C"
            std::putchar(c);
         }
 
-        std::printf("\n");
+        std::putchar('\n');
 
         std::fclose(file);
     }
