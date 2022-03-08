@@ -130,6 +130,18 @@ function on_from_disk_to_virtual_fs()
     }
 }
 
+function on_from_virtual_fs_to_disk()
+{
+    const filepath = document.getElementsByName('name_of_file_to_download')[0].value;
+    const path_parts = filepath.split('/');
+    const filename = path_parts[path_parts.length - 1];
+    const file_content = FS.readFile(filepath, { encoding: 'binary' });
+    var tmp_download_element = document.createElement("a");
+    tmp_download_element.href = window.URL.createObjectURL(new Blob([file_content]));
+    tmp_download_element.download = filename;
+    tmp_download_element.click();
+}
+
 function on_mount_persistent_fs()
 {
     const mount_point = document.getElementsByName('mount_point')[0].value;
