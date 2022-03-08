@@ -17,6 +17,8 @@ target_link_options(wasm_example_01
     PRIVATE
         "-fexceptions"
         "-lidbfs.js"
+        --embed-file ${CMAKE_CURRENT_LIST_DIR}/src/embed@/embed
+        --preload-file ${CMAKE_CURRENT_LIST_DIR}/src/preloaded@/preloaded
 )
 target_link_options(wasm_example_01
     PRIVATE
@@ -50,6 +52,7 @@ install(
 install(
     FILES
         "${CMAKE_CURRENT_BINARY_DIR}/wasm_example_01.wasm"
+        "${CMAKE_CURRENT_BINARY_DIR}/wasm_example_01.data"
         "src/index.html"
         "src/ui.js"
     DESTINATION
