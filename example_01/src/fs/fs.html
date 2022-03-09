@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+</head>
+<body>
+    <script src="fs.js"></script>
+    <script src="fs_additional.js"></script>
+
+        Filename: <input type="text" name="name_of_file_to_write" value="some_file.txt">
+        Text: <input type="text" name="text_to_write" value="Some text">
+        <button onclick="on_write_to_file()">Write</button> <br><br>
+
+    <hr>
+
+        Filename: <input type="text" name="name_of_file_to_read" value="some_file.txt">
+        <button onclick="on_read_from_file()">Read and print to console</button> <br><br>
+
+        Embed file is: /embed/file.txt <br>
+        Preloaded file is: /preloaded/file.txt <br>
+
+    <hr>
+
+        <input type="file" id="choose_file" /> <br><br>
+        Filename in virtual FS: <input type="text" name="name_of_virtual_file_to_write" value="some_file.txt"> <br><br>
+        <button onclick="on_from_disk_to_virtual_fs()">Read file from disk and write to virtual fs</button> <br><br>
+
+    <hr>
+
+        Filename: <input type="text" name="name_of_file_to_download" value="some_file.txt">
+        <button onclick="on_from_virtual_fs_to_disk()">Read file from virtual fs and write to disk</button> <br><br>
+
+    <hr>
+
+        <input type="text" name="mount_point" value="/persistent">
+        <button onclick="on_mount_persistent_fs()">Mount persistent virtual FS</button> <br><br>
+
+        <button onclick="on_restore_from_idbfs()">Restore persistent FS from IDBFS</button>
+        <button onclick="on_save_to_idbfs()">Save persistent FS to IDBFS</button> <br><br>
+
+</body>
+</html>

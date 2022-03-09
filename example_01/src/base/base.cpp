@@ -1,4 +1,5 @@
 #include <string_view>
+#include <thread>
 
 #include <cassert>
 #include <cstdio>
@@ -76,5 +77,19 @@ extern "C"
         std::putchar('\n');
 
         std::fclose(file);
+    }
+
+    void sleep_in_another_thread(int seconds)
+    {
+        std::thread th
+        {
+            [seconds]
+            {
+                std::printf("Sleep for %d seconds", seconds);
+                std::this_thread::sleep_for(std::chrono::seconds{seconds});
+                std::printf("Thread woke up");
+            }
+        };
+        th.join();
     }
 }
