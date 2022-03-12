@@ -55,6 +55,7 @@ target_link_options(threads
             cwrap"
         "-sEXPORTED_FUNCTIONS=\
             _sleep_in_another_thread"
+        "-sPTHREAD_POOL_SIZE=1"
 )
 
 install(
