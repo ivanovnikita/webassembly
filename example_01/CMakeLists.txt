@@ -68,7 +68,7 @@ target_link_options(graphics
         "-sUSE_GLFW=3"
         "-sEXPORTED_FUNCTIONS=\
             _main,\
-            _UpdateDrawFrame"
+            _update_draw_frame"
 )
 target_link_libraries(graphics PRIVATE raylib)
 target_include_directories(graphics PRIVATE "${EMSCRIPTEN_ROOT_PATH}/system/include")
