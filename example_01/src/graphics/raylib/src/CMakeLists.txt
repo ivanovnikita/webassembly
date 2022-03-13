@@ -101,7 +101,7 @@ file(COPY ${raylib_public_headers} DESTINATION "include")
 
 # Includes information on how the library will be installed on the system
 # when cmake --install is run
-include(InstallConfigurations)
+#include(InstallConfigurations)
 
 # Print the flags for the user
 if (DEFINED CMAKE_BUILD_TYPE)
