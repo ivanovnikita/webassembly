@@ -1,95 +1,31 @@
-#include <string_view>
-#include <thread>
+#include <raylib.h>
 
-#include <cassert>
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
+#include <emscripten/emscripten.h>
 
 extern "C"
 {
-    void print_message()
+    void UpdateDrawFrame()
     {
-        std::printf("Hello world!\n");
+        BeginDrawing();
+
+            ClearBackground(RAYWHITE);
+
+            DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
+
+        EndDrawing();
     }
 
-    const char* get_static_message()
+    int main()
     {
-        return "Hello world!";
-    }
+        const int screenWidth = 800;
+        const int screenHeight = 450;
 
-    int copy_message(char* output_buffer, int max_len)
-    {
-        constexpr std::string_view message = "Hello world!\0";
-        std::strncpy(output_buffer, message.data(), max_len);
-        return std::min<int>(max_len, message.size());
-    }
+        InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
 
-    const char* get_allocated_message()
-    {
-        constexpr std::string_view message = "Hello world!\0";
-        char* const result = reinterpret_cast<char*>(std::malloc(message.size()));
-        assert(result != nullptr);
-        std::strncpy(result, message.data(), message.size() + 1);
-        return result;
-    }
+        emscripten_set_main_loop(UpdateDrawFrame, 0, 1);
 
-    void invoke_assert()
-    {
-        assert(false);
-    }
+        CloseWindow();
 
-    void throw_exception()
-    {
-        throw std::logic_error("logic error");
-    }
-
-    void write_to_file(const char* filename, const char* text_to_print)
-    {
-        FILE* file = std::fopen(filename, "w+");
-        if (file == nullptr)
-        {
-            std::perror("Can't open file");
-            return;
-        }
-
-        std::fwrite(text_to_print, sizeof(char), std::strlen(text_to_print), file);
-        std::fflush(file);
-
-        std::fclose(file);
-    }
-
-    void read_from_file(const char* filename)
-    {
-        FILE* file = std::fopen(filename, "r+");
-        if (file == nullptr)
-        {
-            std::perror("Can't open file\n");
-            return;
-        }
-
-        int c = 0;
-        while ((c = std::fgetc(file)) != EOF)
-        {
-           std::putchar(c);
-        }
-
-        std::putchar('\n');
-
-        std::fclose(file);
-    }
-
-    void sleep_in_another_thread(int seconds)
-    {
-        std::thread th
-        {
-            [seconds]
-            {
-                std::printf("Sleep for %d seconds", seconds);
-                std::this_thread::sleep_for(std::chrono::seconds{seconds});
-                std::printf("Thread woke up");
-            }
-        };
-        th.join();
+        return 0;
     }
 }

@@ -58,11 +58,28 @@ target_link_options(threads
         "-sPTHREAD_POOL_SIZE=1"
 )
 
+set(PLATFORM Web CACHE STRING "Forcing PLATFORM_WEB")
+add_subdirectory(src/graphics/raylib)
+
+add_executable(graphics src/graphics/graphics.cpp)
+target_link_options(graphics
+    PRIVATE
+        "-sENVIRONMENT=web"
+        "-sUSE_GLFW=3"
+        "-sEXPORTED_FUNCTIONS=\
+            _main,\
+            _UpdateDrawFrame"
+)
+target_link_libraries(graphics PRIVATE raylib)
+target_include_directories(graphics PRIVATE "${EMSCRIPTEN_ROOT_PATH}/system/include")
+#set_target_properties(graphics PROPERTIES SUFFIX ".html")
+
 install(
     TARGETS
         base
         fs
         threads
+        graphics
     DESTINATION
         "."
 )
@@ -73,6 +90,7 @@ install(
         "${CMAKE_CURRENT_BINARY_DIR}/fs.data" # containes preloaded files
         "${CMAKE_CURRENT_BINARY_DIR}/threads.wasm"
         "${CMAKE_CURRENT_BINARY_DIR}/threads.worker.js"
+        "${CMAKE_CURRENT_BINARY_DIR}/graphics.wasm"
         "src/server.py"
         "src/index.html"
         "src/base/base.html"
