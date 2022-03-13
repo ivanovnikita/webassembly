@@ -42,40 +42,40 @@ function on_click_copy_message()
     console.log(message);
 }
 
-var get_allocated_message = Module.cwrap
-(
-    'get_allocated_message',
-    'number'
-);
-
-function on_click_get_allocated_message()
+function on_click_copy_message_direct_call()
 {
-    const message_ptr = get_allocated_message();
-    const message = Module.UTF8ToString(message_ptr); 
+    const max_message_size = 256;
+    const message_buffer_ptr = _malloc(max_message_size);
 
-    Module._free(message_ptr);
+    const message_size = _copy_message(message_buffer_ptr, max_message_size);
+    const message = Module.UTF8ToString(message_buffer_ptr, max_message_size);
+
+    _free(message_buffer_ptr);
 
     console.log(message);
 }
 
-var invoke_assert = Module.cwrap
-(
-    'invoke_assert',
-    null,
-);
+function on_click_get_allocated_message()
+{
+    const message_ptr = _get_allocated_message();
+    const message = Module.UTF8ToString(message_ptr); 
+
+    _free(message_ptr);
+
+    console.log(message);
+}
+
+function on_call_js_caller()
+{
+    _call_js();
+}
 
 function on_invoke_assert()
 {
-    invoke_assert();
+    _invoke_assert();
 }
-
-var throw_exception = Module.cwrap
-(
-    'throw_exception',
-    null,
-);
 
 function on_throw_exception()
 {
-    throw_exception();
+    _throw_exception();
 }

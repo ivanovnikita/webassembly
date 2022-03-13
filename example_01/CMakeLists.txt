@@ -24,8 +24,10 @@ target_link_options(base
             _get_static_message,\
             _copy_message,\
             _get_allocated_message,\
+            _call_js,\
             _invoke_assert,\
             _throw_exception"
+        --js-library ${CMAKE_CURRENT_LIST_DIR}/src/base/base_library.js
 )
 
 add_executable(fs src/fs/fs.cpp)

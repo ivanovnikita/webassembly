@@ -32,6 +32,13 @@ extern "C"
         return result;
     }
 
+    extern void print_hello_in_js();
+
+    void call_js()
+    {
+        print_hello_in_js();
+    }
+
     void invoke_assert()
     {
         assert(false);
