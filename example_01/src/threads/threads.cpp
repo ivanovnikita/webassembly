@@ -15,6 +15,6 @@ extern "C"
                 std::printf("Thread woke up\n");
             }
         };
-        th.detach();
+        th.detach(); // do not use std::thread::join() in main thread: it will freeze page
     }
 }

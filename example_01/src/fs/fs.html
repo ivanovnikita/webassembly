@@ -7,11 +7,17 @@
     <script src="fs.js"></script>
     <script src="fs_additional.js"></script>
 
+    <a href="index.html">Home</a> <br><br>
+
+        Write text to any file in virtual FS: <br><br>
+
         Filename: <input type="text" name="name_of_file_to_write" value="some_file.txt">
         Text: <input type="text" name="text_to_write" value="Some text">
         <button onclick="on_write_to_file()">Write</button> <br><br>
 
     <hr>
+
+        Read content of any file in virtual FS: <br><br>
 
         Filename: <input type="text" name="name_of_file_to_read" value="some_file.txt">
         <button onclick="on_read_from_file()">Read and print to console</button> <br><br>
@@ -21,16 +27,22 @@
 
     <hr>
 
+        From local FS to virtual FS: <br><br>
+
         <input type="file" id="choose_file" /> <br><br>
         Filename in virtual FS: <input type="text" name="name_of_virtual_file_to_write" value="some_file.txt"> <br><br>
         <button onclick="on_from_disk_to_virtual_fs()">Read file from disk and write to virtual fs</button> <br><br>
 
     <hr>
 
+        From virtual FS to local FS: <br><br>
+
         Filename: <input type="text" name="name_of_file_to_download" value="some_file.txt">
         <button onclick="on_from_virtual_fs_to_disk()">Read file from virtual fs and write to disk</button> <br><br>
 
     <hr>
+
+        Use presistent FS to keep data alive between page reloadings: <br><br>
 
         <input type="text" name="mount_point" value="/persistent">
         <button onclick="on_mount_persistent_fs()">Mount persistent virtual FS</button> <br><br>
