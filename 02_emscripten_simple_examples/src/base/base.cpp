@@ -39,6 +39,12 @@ extern "C"
         print_hello_in_js();
     }
 
+    int invalid_memory_access()
+    {
+        int* ptr = reinterpret_cast<int*>(0xfffffff);
+        return *ptr;
+    }
+
     void invoke_assert()
     {
         assert(false);

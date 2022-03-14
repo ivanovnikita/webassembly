@@ -25,6 +25,7 @@ target_link_options(base
             _copy_message,\
             _get_allocated_message,\
             _call_js,\
+            _invalid_memory_access,\
             _invoke_assert,\
             _throw_exception"
         --js-library ${CMAKE_CURRENT_LIST_DIR}/src/base/base_library.js

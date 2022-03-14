@@ -70,6 +70,11 @@ function on_call_js_caller()
     _call_js();
 }
 
+function on_invalid_memory_access()
+{
+    _invalid_memory_access();
+}
+
 function on_invoke_assert()
 {
     _invoke_assert();
