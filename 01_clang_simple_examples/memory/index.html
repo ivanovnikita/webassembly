@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+</head>
+<body>
+
+Copy to heap memory: <input type="number" name="a" value="1" min="0" max="100"> <br><br>
+In heap memory <span id="b"></span>
+
+<button onclick="on_copy()">Copy</button> <br><br>
+
+<script>
+
+    let wasm_module_instance;
+
+    WebAssembly.instantiateStreaming(fetch('memory.wasm'))
+        .then
+        (
+            function(obj)
+            {
+                wasm_module_instance = obj;
+            }
+        );
+
+    function on_copy()
+    {
+        const i32_memory_view = new Int32Array(wasm_module_instance.instance.exports.memory.buffer);
+
+        const memory_index = 0;
+
+        const a = document.getElementsByName('a')[0].value;
+        wasm_module_instance.instance.exports.write_to_heap_memory(a, memory_index);
+
+        var b_el = document.getElementById('b');
+        b_el.innerText = i32_memory_view[memory_index];
+    }
+
+</script>
+
+</body>
+</html> 
