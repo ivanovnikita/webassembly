@@ -53,6 +53,7 @@ cd webassembly/02_emscripten_simple_examples/pages
 * Book "WebAssembly in Action by Gerard Gallant";
 * Design rationale: https://github.com/WebAssembly/design/blob/main/Rationale.md
 * Emscripten docs: https://emscripten.org/docs/porting/index.html
+* Emscripten ported libraries : https://github.com/emscripten-ports
 * V8 (JavaScript and WebAssembly engine from Google): 
     - https://v8.dev/docs
     - https://v8.dev/docs/embed
