@@ -64,3 +64,4 @@ cd webassembly/02_emscripten_simple_examples/pages
 * Partial implementation of libc: https://github.com/PetterS/clang-wasm
 * C/C++ DevTools Support (DWARF) (extension for Chrome): https://goo.gle/wasm-debugging-extension
 * Wasm threads: https://dzone.com/articles/webassembly-threads-in-firefox
+* Projects made with wasm: https://madewithwebassembly.com/all-projects
