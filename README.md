@@ -23,7 +23,7 @@ cd webassembly/02_emscripten_simple_examples
 mkdir build
 mkdir pages
 cd build
-ecmake cmake -DCMAKE_BUILD_TYPE=Release -DINSTALL_PREFIX_PATH=../pages ..
+emcmake cmake -DCMAKE_BUILD_TYPE=Release -DINSTALL_PREFIX_PATH=../pages ..
 make install
 ```
 
